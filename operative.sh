@@ -44,8 +44,8 @@ sudo apt install mysql-server -y
 sudo service mysql start
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD';"
 
-echo "MySQL root password: $mysqlPassword"
-echo "MySQL root password: $mysqlPassword" >> output.txt
+echo "MySQL root password: $MYSQL_ROOT_PASSWORD"
+echo "MySQL root password: $MYSQL_ROOT_PASSWORD" >> output.txt
 
 echo "Installing composer..."
 sudo apt install composer -y
@@ -64,6 +64,27 @@ ssh-keygen -t rsa -b 4096 -f /home/operative/.ssh/id_rsa -q -N ""
 
 sudo su
 
-# Create the .ssh directory and authorized_keys file
-mkdir /home/operative/.ssh
+# Create authorized_keys file
 touch /home/operative/.ssh/authorized_keys
+
+echo "Copy your public key and paste it here:"
+
+# Copy the public key to the authorized_keys file
+read -p "Public key: " key
+
+echo "$key" >> /home/operative/.ssh/authorized_keys
+
+# Change the owner of the .ssh directory and authorized_keys file
+chown -R operative:operative /home/operative/.ssh
+
+# Change the permissions of the .ssh directory and authorized_keys file
+chmod 700 /home/operative/.ssh
+chmod 600 /home/operative/.ssh/authorized_keys
+
+# Switch to the ubuntu user
+exit
+
+echo "You can now login to the operative user with the following command:"
+echo "ssh operative@$(curl -s ifconfig.me)"
+
+echo "You can get the mysql root password and operative user's password from the output.txt file"
