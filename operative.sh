@@ -54,37 +54,21 @@ echo "Installing php..."
 sudo apt install php php-mbstring php-xml php-bcmath php-curl -y
 
 # Switch to the operative user
-sudo su operative
-
+sudo su - operative -c "
 cd /home/operative/
 
 # Generate ssh key for the operative user
-echo "Generating ssh key for the operative user..."
-ssh-keygen -t rsa -b 4096 -f /home/operative/.ssh/id_rsa -q -N ""
-
-sudo su
+echo 'Generating ssh key for the operative user...'
+ssh-keygen -t rsa -b 4096 -f /home/operative/.ssh/id_rsa -q -N ''
 
 # Create authorized_keys file
 touch /home/operative/.ssh/authorized_keys
-
-echo "Copy your public key and paste it here:"
-
-# Copy the public key to the authorized_keys file
-read -p "Public key: " key
-
-echo "$key" >> /home/operative/.ssh/authorized_keys
-
-# Change the owner of the .ssh directory and authorized_keys file
-chown -R operative:operative /home/operative/.ssh
-
-# Change the permissions of the .ssh directory and authorized_keys file
-chmod 700 /home/operative/.ssh
 chmod 600 /home/operative/.ssh/authorized_keys
 
-# Switch to the ubuntu user
-exit
+printf '%s' '$key' >> /home/operative/.ssh/authorized_keys
+"
 
 echo "You can now login to the operative user with the following command:"
 echo "ssh operative@$(curl -s ifconfig.me)"
 
-echo "You can get the mysql root password and operative user's password from the output.txt file"
+echo "You can get the MySQL root password and operative user's password from the output.txt file"
