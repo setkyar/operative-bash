@@ -53,6 +53,9 @@ sudo apt install composer -y
 echo "Installing php..."
 sudo apt install php php-mbstring php-xml php-bcmath php-curl -y
 
+echo "Copy your public key and paste it here:"
+read -p "Public key: " key
+
 # Switch to the operative user
 sudo su - operative -c "
 cd /home/operative/
