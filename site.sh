@@ -41,6 +41,11 @@ case $flag in
   laravel)
     echo "Performing Laravel-related stuff for $app_name"
 
+
+    # Add operative user to www-data group
+    sudo usermod -a -G www-data operative
+    sudo chown -R operative:www-data /var/www
+
     git clone $repository /var/www/$app_name
 
     # install composer
@@ -63,7 +68,6 @@ case $flag in
     # laravel storage permission
     sudo chgrp -R www-data /var/www/$app_name/storage /var/www/$app_name/bootstrap/cache
     sudo chmod -R ug+rwx /var/www/$app_name/storage /var/www/$app_name/bootstrap/cache
-
 
     # certbot
     sudo certbot --nginx -d $app_name -d www.$app_name

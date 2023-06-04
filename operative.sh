@@ -44,6 +44,8 @@ sudo apt install nginx -y
 sudo rm -rf /var/www/html/
 sudo rm /etc/nginx/sites-enabled/default
 
+sudo apt install certbot python3-certbot-nginx
+
 echo "Installing mysql..."
 
 MYSQL_ROOT_PASSWORD=$(openssl rand -base64 12)
