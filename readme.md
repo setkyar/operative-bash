@@ -15,6 +15,8 @@ Setup ubuntu server for your Laravel application.
 SSH to the server and git clone this repo. And `cd` into the repo and run the following.
 
 ```
+wget https://raw.githubusercontent.com/setkyar/operative-bash/master/operative.sh
+chmod +x ./operative.sh
 sudo ./operative.sh
 ```
 
@@ -23,5 +25,7 @@ By running this, it will create a new user call `operative`.You can find the pas
 ### Adding Laravel sites
 
 ```
-./site.sh example.com "git@github.com:setkyar/operative-bash.git"
+wget https://raw.githubusercontent.com/setkyar/operative-bash/master/site.sh
+chmod +x ./site.sh
+./site.sh example.com "git@github.com:setkyar/operative.git" --laravel
 ```

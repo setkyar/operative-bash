@@ -33,8 +33,16 @@ echo "User 'operative' has been created with sudo access."
 echo "The generated password for 'operative' is: $password"
 echo "The generated password for 'operative' is: $password" > output.txt
 
+# Add operative user to www-data group
+sudo usermod -a -G www-data operative
+sudo chown -R operative:www-data /var/www
+
 echo "Installing nginx..."
 sudo apt install nginx -y
+
+# clean up default nginx files
+sudo rm -rf /var/www/html/
+sudo rm /etc/nginx/sites-enabled/default
 
 echo "Installing mysql..."
 
@@ -51,7 +59,7 @@ echo "Installing composer..."
 sudo apt install composer -y
 
 echo "Installing php..."
-sudo apt install php php-mbstring php-xml php-bcmath php-curl -y
+sudo apt install php php-fpm php-mbstring php-xml php-bcmath php-curl -y
 
 echo "Copy your public key and paste it here:"
 read -p "Public key: " key
