@@ -44,7 +44,7 @@ sudo apt install nginx -y
 sudo rm -rf /var/www/html/
 sudo rm /etc/nginx/sites-enabled/default
 
-sudo apt install certbot python3-certbot-nginx
+sudo apt install certbot python3-certbot-nginx -y
 
 echo "Installing mysql..."
 

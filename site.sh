@@ -70,7 +70,18 @@ case $flag in
     sudo chmod -R ug+rwx /var/www/$app_name/storage /var/www/$app_name/bootstrap/cache
 
     # certbot
-    sudo certbot --nginx -d $app_name -d www.$app_name
+    # Split the domain into parts using dot as the delimiter
+    IFS='.' read -ra domain_parts <<< $app_name
+
+    # Check if the domain has more than one part
+    if [ "${#domain_parts[@]}" -gt 2 ]; then
+      echo "The domain $domain is a subdomain."
+      sudo certbot --nginx -d $app_name
+    else
+      sudo certbot --nginx -d $app_name -d www.$app_name
+    fi
+
+    echo "Laravel site $app_name has been set up!"
     ;;
   node)
     echo "Performing Node-related stuff for $app_name"

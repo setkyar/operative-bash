@@ -27,5 +27,5 @@ By running this, it will create a new user call `operative`.You can find the pas
 ```
 wget https://raw.githubusercontent.com/setkyar/operative-bash/master/site.sh
 chmod +x ./site.sh
-./site.sh example.com "git@github.com:setkyar/operative.git" --laravel
+./site.sh example.com "git@github.com:setkyar/operative-laravel-simple.git" --laravel
 ```
