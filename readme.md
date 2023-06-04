@@ -8,6 +8,9 @@ OS - Ubuntu 22.04.* (LTS)
 
 > You don't need to pay server management website . You just need a little bit of curiosity and bash script.
 
+
+You can check the video guide [here](https://www.loom.com/share/53ebb1d8945148f7be8aab4b8046ef2f).
+
 ## Laravel
 
 Setup ubuntu server for your Laravel application.
