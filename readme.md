@@ -20,7 +20,7 @@ SSH to the server and git clone this repo. And `cd` into the repo and run the fo
 ```
 wget https://raw.githubusercontent.com/setkyar/operative-bash/master/operative.sh
 chmod +x ./operative.sh
-sudo ./operative.sh
+sudo ./operative.sh {{ YOUR_LOCAL_SSH_PUBLIC_KEY }}
 ```
 
 By running this, it will create a new user call `operative`.You can find the password from terminal output or you can look into at `output.txt`.
