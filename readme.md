@@ -8,7 +8,11 @@ OS - Ubuntu 22.04.* (LTS)
 
 > You don't need to pay for a server management website. You just need a little bit of curiosity and a bash script.
 
-You can check out the video guide [here](https://www.loom.com/share/53ebb1d8945148f7be8aab4b8046ef2f).
+## Video Guide
+
+- Laravel setup Guide
+
+[![Setting Up a Laravel Application on EC2 Instance Using Operative Bash | Step-by-Step Tutorial](https://img.youtube.com/vi/TeEVQKThpTw/0.jpg)](https://www.youtube.com/watch?v=TeEVQKThpTw)
 
 ## Setting up the Operative user and installing necessary software
 
