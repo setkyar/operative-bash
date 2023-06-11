@@ -14,6 +14,9 @@ OS - Ubuntu 22.04.* (LTS)
 
 [![Setting Up a Laravel Application on EC2 Instance Using Operative Bash | Step-by-Step Tutorial](https://img.youtube.com/vi/TeEVQKThpTw/0.jpg)](https://www.youtube.com/watch?v=TeEVQKThpTw)
 
+- Express setup Guide
+
+[![Setting Up an Express Application on EC2 Instance Using Operative Bash | Step-by-Step Tutorial](https://img.youtube.com/vi/uXaxbxgYus0/0.jpg)](https://www.youtube.com/watch?v=uXaxbxgYus0)
 ## Setting up the Operative user and installing necessary software
 
 SSH to the server and clone this repository. Then, navigate to the repository directory and run the following commands:
