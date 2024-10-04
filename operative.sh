@@ -5,8 +5,51 @@ if [[ -z $1 ]]; then
   echo "Please provide your public key as an argument."
   exit 1
 fi
-
 public_key=$1
+
+validate_php_version() {
+  case $1 in
+    7.4|8.0|8.1|8.2)
+    return 0
+    ;;
+  *)
+    return 1
+    ;;
+  esac
+}
+
+validate_node_version() {
+  case $1 in
+    v16.20.2|v18.20.4|v20.18.0)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+
+# Prompt for PHP version
+while true; do
+  read -p "Enter the desired PHP version (7.4, 8.0, 8.1, or 8.2): " php_version
+  if validate_php_version $php_version; then
+    break
+  else
+    echo "Invalid PHP version. Please enter 7.4, 8.0, 8.1, or 8.2."
+  fi
+done
+
+# Prompt for Node.js version
+while true; do
+  read -p "Enter the desired Node.js version (v16.20.2, v18.20.4, or v20.18.0): " node_version
+  if validate_node_version $node_version; then
+    break
+  else
+    echo "Invalid Node.js version. Please enter v16.20.2, v18.20.4, or v20.18.0."
+  fi
+done
+
 
 echo "Updating local package index..."
 sudo apt update -y
@@ -70,8 +113,11 @@ echo "MySQL root password: $MYSQL_ROOT_PASSWORD" >> output.txt
 echo "Installing composer..."
 sudo apt install composer -y
 
-echo "Installing php..."
-sudo apt install php php-fpm php-mbstring php-xml php-bcmath php-curl -y
+echo "Installing PHP version $php_version..."
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt install php$php_version php$php_version-fpm php$php_version-mbstring php$php_version-xml php$php_version-bcmath php$php_version-curl -y
 
 # Switch to the operative user
 sudo su - operative -c "
@@ -86,8 +132,10 @@ source /home/operative/.bashrc
 # Load nvm environment
 source /home/operative/.nvm/nvm.sh
 
-nvm install --lts
-nvm alias default node
+# Install specified Node.js version
+echo 'Installing Node.js version $node_version...'
+nvm install $node_version
+nvm alias default $node_version
 
 # Install pm2
 echo 'Installing pm2...'

@@ -60,6 +60,10 @@ case $flag in
     # replace app_name with $app_name
     sudo sed -i "s/example.com/$app_name/g" /etc/nginx/sites-enabled/$app_name
 
+    # Get the current PHP version
+    PHP_VERSION=$(php -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
+    sudo sed -i "s/php-fpm.sock/php${PHP_VERSION}-fpm.sock/g" /etc/nginx/sites-available/$app_name
+
     # restart nginx
     sudo service nginx restart
 
