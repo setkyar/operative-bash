@@ -32,7 +32,7 @@ validate_node_version() {
 
 # Prompt for PHP version
 while true; do
-  read -p "Enter the desired PHP version (7.4, 8.0, 8.1, or 8.2): " php_version
+  read -p "Enter the desired PHP version (7.4, 8.0, 8.1, 8.2, or 8.3): " php_version
   if validate_php_version $php_version; then
     break
   else
