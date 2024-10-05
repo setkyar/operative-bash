@@ -39,7 +39,7 @@ You can easily add a Laravel site by following these steps:
 ```
 wget https://raw.githubusercontent.com/setkyar/operative-bash/master/site.sh
 chmod +x ./site.sh
-./site.sh example.com "git@github.com:setkyar/operative-laravel-simple.git" --laravel
+./site.sh example.com "https://github.com/setkyar/operative-laravel-simple-v2.git" --laravel
 ```
 
 ### Adding NodeJS sites
@@ -49,5 +49,5 @@ You can easily add NodeJS sites by following these steps. It will prompt you to 
 ```
 wget https://raw.githubusercontent.com/setkyar/operative-bash/master/site.sh
 chmod +x ./site.sh
-./site.sh example.com "git@github.com:setkyar/operative-express-simple.git" --node
+./site.sh example.com "https://github.com/setkyar/operative-express-simple.git" --node
 ```

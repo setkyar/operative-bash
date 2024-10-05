@@ -122,14 +122,7 @@ case $flag in
     # Split the domain into parts using dot as the delimiter
     IFS='.' read -ra domain_parts <<< $app_name
 
-    # Check if the domain has more than one part
-    if [ "${#domain_parts[@]}" -gt 2 ]; then
-      echo "The domain $domain is a subdomain."
-      sudo certbot --nginx -d $app_name
-    else
-      sudo certbot --nginx -d $app_name -d www.$app_name
-      # certbot install --cert-name operateservers.com
-    fi
+    sudo certbot --nginx -d $app_name
     ;;
   *)
     echo "Invalid flag: $flag"
