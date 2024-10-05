@@ -117,7 +117,7 @@ echo "Installing PHP version $php_version..."
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt update
-sudo apt install php$php_version php$php_version-fpm php$php_version-mbstring php$php_version-xml php$php_version-bcmath php$php_version-curl -y
+sudo apt install php$php_version php$php_version-fpm php$php_version-mbstring php$php_version-xml php$php_version-bcmath php$php_version-curl php-sqlite3 -y
 
 # Switch to the operative user
 sudo su - operative -c "

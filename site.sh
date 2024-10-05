@@ -62,7 +62,7 @@ case $flag in
 
     # Get the current PHP version
     PHP_VERSION=$(php -v | head -n 1 | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
-    sudo sed -i "s/php-fpm.sock/php${PHP_VERSION}-fpm.sock/g" /etc/nginx/sites-available/$app_name
+    sudo sed -i "s/php-fpm.sock/php${PHP_VERSION}-fpm.sock/g" /etc/nginx/sites-enabled/$app_name
 
     # restart nginx
     sudo service nginx restart
@@ -70,6 +70,8 @@ case $flag in
     # laravel storage permission
     sudo chgrp -R www-data /var/www/$app_name/storage /var/www/$app_name/bootstrap/cache
     sudo chmod -R ug+rwx /var/www/$app_name/storage /var/www/$app_name/bootstrap/cache
+    sudo chown www-data:www-data /var/www/$app_name/database/
+    sudo chmod 775 /var/www/$app_name/database/
 
     # Ask the user if they want to add Certbot
     read -p "Do you want to add Certbot? (y/n): " add_certbot
@@ -135,6 +137,7 @@ case $flag in
       sudo certbot --nginx -d $app_name
     else
       sudo certbot --nginx -d $app_name -d www.$app_name
+      # certbot install --cert-name operateservers.com
     fi
     ;;
   *)
