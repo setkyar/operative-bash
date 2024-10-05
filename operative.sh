@@ -9,7 +9,7 @@ public_key=$1
 
 validate_php_version() {
   case $1 in
-    7.4|8.0|8.1|8.2)
+    7.4|8.0|8.1|8.2|8.3)
     return 0
     ;;
   *)
@@ -117,7 +117,9 @@ echo "Installing PHP version $php_version..."
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt update
-sudo apt install php$php_version php$php_version-fpm php$php_version-mbstring php$php_version-dom php$php_version-xml php$php_version-bcmath php$php_version-curl php-sqlite3 -y
+sudo apt install php$php_version php$php_version-fpm php$php_version-mbstring php$php_version-dom php$php_version-xml php$php_version-bcmath php$php_version-curl php$php_version-intl php$php_version-sqlite3 -y
+
+sudo update-alternatives --set php /usr/bin/php$php_version
 
 # Switch to the operative user
 sudo su - operative -c "
