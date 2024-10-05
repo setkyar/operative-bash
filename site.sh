@@ -55,7 +55,7 @@ case $flag in
 
     # prepare nginx config file
     cd /etc/nginx/sites-enabled
-    sudo wget -O $app_name https://raw.githubusercontent.com/setkyar/operative-bash/master/struts/laravel
+    sudo wget -O $app_name https://raw.githubusercontent.com/setkyar/operative-bash/master/structs/laravel
 
     # replace app_name with $app_name
     sudo sed -i "s/example.com/$app_name/g" /etc/nginx/sites-enabled/$app_name
@@ -103,7 +103,7 @@ case $flag in
 
     # prepare nginx config file
     cd /etc/nginx/sites-enabled
-    sudo wget -O $app_name https://raw.githubusercontent.com/setkyar/operative-bash/master/struts/proxy-pass
+    sudo wget -O $app_name https://raw.githubusercontent.com/setkyar/operative-bash/master/structs/proxy-pass
 
     # replace app_name with $app_name
     sudo sed -i "s/example.com/$app_name/g" /etc/nginx/sites-enabled/$app_name
