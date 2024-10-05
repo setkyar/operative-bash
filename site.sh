@@ -77,16 +77,7 @@ case $flag in
     read -p "Do you want to add Certbot? (y/n): " add_certbot
 
     if [[ $add_certbot =~ ^[Yy]$ ]]; then
-        # Split the domain into parts using dot as the delimiter
-        IFS='.' read -ra domain_parts <<< "$app_name"
-
-        # Check if the domain has more than one part
-        if (( ${#domain_parts[@]} > 2 )); then
-            echo "The domain $app_name is a subdomain."
-            sudo certbot --nginx -d "$app_name"
-        else
-            sudo certbot --nginx -d "$app_name" -d "www.$app_name"
-        fi
+      sudo certbot --nginx -d "$app_name"
     fi
 
 
